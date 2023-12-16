@@ -1,0 +1,79 @@
+plugins {
+    id 'multi.module.tutorial.java-library-conventions'
+    id 'maven-publish'
+}
+
+group = 'module.domains'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("http://localhost:18081/repository/tutorial-repo-group/")
+        allowInsecureProtocol = true
+        credentials {
+            username = 'tutorial-repo-user'
+            password = 'tutorial-repo-user-password'
+        }
+    }
+}
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-validation'
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            def nexusReleaseUrl = uri("http://localhost:18081/repository/tutorial-repo-release/")
+            def nexusSnapshotsUrl = uri("http://localhost:18081/repository/tutorial-repo-snapshot/")
+            url = version.endsWith('SNAPSHOT') ? nexusSnapshotsUrl : nexusReleaseUrl
+
+            credentials {
+                username = 'tutorial-repo-user'
+                password = 'tutorial-repo-user-password'
+            }
+            allowInsecureProtocol = true
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}

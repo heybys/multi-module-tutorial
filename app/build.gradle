@@ -1,0 +1,8 @@
+plugins {
+    id 'multi.module.tutorial.java-application-conventions'
+}
+
+dependencies {
+    implementation project(':module-domains:module-domain-member')
+    runtimeOnly 'com.h2database:h2'
+}

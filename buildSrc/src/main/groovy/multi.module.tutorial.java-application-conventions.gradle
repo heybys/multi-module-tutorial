@@ -1,0 +1,7 @@
+plugins {
+    id 'multi.module.tutorial.java-common-conventions'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}

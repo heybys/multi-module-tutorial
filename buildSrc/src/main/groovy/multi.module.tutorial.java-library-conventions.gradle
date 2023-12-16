@@ -1,0 +1,4 @@
+plugins {
+    id 'multi.module.tutorial.java-common-conventions'
+    id 'java-library'
+}
