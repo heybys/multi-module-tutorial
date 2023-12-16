@@ -1,4 +1,46 @@
 plugins {
     id 'multi.module.tutorial.java-common-conventions'
     id 'java-library'
+    id 'maven-publish'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            def nexusReleaseUrl = uri("http://localhost:18081/repository/tutorial-repo-release/")
+            def nexusSnapshotsUrl = uri("http://localhost:18081/repository/tutorial-repo-snapshot/")
+            url = version.endsWith('SNAPSHOT') ? nexusSnapshotsUrl : nexusReleaseUrl
+
+            credentials {
+                username = 'tutorial-repo-user'
+                password = 'tutorial-repo-user-password'
+            }
+            allowInsecureProtocol = true
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
 }

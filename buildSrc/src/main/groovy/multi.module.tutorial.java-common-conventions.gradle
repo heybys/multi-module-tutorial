@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'io.freefair.lombok'
 }
 
 repositories {
@@ -9,10 +10,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -20,6 +18,8 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
+    sourceCompatibility = '17'
+
 }
 
 test {
