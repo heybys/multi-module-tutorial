@@ -3,7 +3,6 @@ plugins {
 }
 
 group = 'module.features'
-version = '0.0.1-SNAPSHOT'
 
 dependencies {
     implementation project(':module-domains:module-domain-member')
