@@ -1,0 +1,12 @@
+plugins {
+    id 'multi.module.tutorial.java-library-conventions'
+}
+
+group = 'module.features'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':module-domains:module-domain-member')
+    api 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'com.h2database:h2'
+}

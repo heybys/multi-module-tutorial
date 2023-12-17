@@ -1,4 +1,4 @@
-package multi.module.tutorial.app.service;
+package module.feature.membermanagement.service;
 
 import lombok.RequiredArgsConstructor;
 import module.domain.member.Member;

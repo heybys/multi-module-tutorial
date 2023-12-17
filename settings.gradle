@@ -2,3 +2,4 @@ rootProject.name = 'multi-module-tutorial'
 
 include 'app'
 include 'module-domains:module-domain-member'
+include 'module-features:module-feature-member-management'

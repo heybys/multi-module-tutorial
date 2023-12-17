@@ -1,8 +1,8 @@
-package multi.module.tutorial.app.api;
+package module.feature.membermanagement.api;
 
 import lombok.RequiredArgsConstructor;
-import multi.module.tutorial.app.service.RegisterMember;
-import multi.module.tutorial.app.service.RegisterMemberService;
+import module.feature.membermanagement.service.RegisterMember;
+import module.feature.membermanagement.service.RegisterMemberService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
