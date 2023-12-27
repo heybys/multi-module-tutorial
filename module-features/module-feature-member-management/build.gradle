@@ -7,5 +7,4 @@ group = 'module.features'
 dependencies {
     implementation project(':module-domains:module-domain-member')
     api 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2'
 }
